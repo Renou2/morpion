@@ -27,6 +27,8 @@ public class VueMorpion extends Observable{
     private final JFrame window ;
     private final JPanel middlePanel;
     private final ArrayList <JButton> listeBouttons = new ArrayList<>();
+    private final JButton classement;
+    private final JButton pSuivante;
 
     
     public VueMorpion (String j1, String j2){
@@ -59,30 +61,130 @@ public class VueMorpion extends Observable{
         middlePanel = new JPanel (new GridLayout(3, 3));
         mainPanel.add(middlePanel, BorderLayout.CENTER);
         
-        JButton un = new JButton("ezrzerzerze"); listeBouttons.add(un);
-        JButton deux = new JButton("ezrzerzerze");listeBouttons.add(deux);
-        JButton trois = new JButton("ezrzerzerze");listeBouttons.add(trois);
-        JButton quatre = new JButton("ezrzerzerze");listeBouttons.add(quatre);
-        JButton cinq = new JButton("ezrzerzerze");listeBouttons.add(cinq);
-        JButton six = new JButton("ezrzerzerze");listeBouttons.add(six);
-        JButton sept = new JButton("ezrzerzerze");listeBouttons.add(sept);
-        JButton huit = new JButton("ezrzerzerze");listeBouttons.add(huit);
-        JButton neuf = new JButton("ezrzerzerze");listeBouttons.add(neuf);
-        
-        for( int i = 0; i<=8; i++){
-            listeBouttons.get(i).addActionListener(new ActionListener() {
+        JButton zero = new JButton();listeBouttons.add(zero);
+        zero.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     setChanged();
-                    notifyObservers(getListeBouttons().indexOf(this));
+                    notifyObservers(listeBouttons.indexOf(zero));
                     clearChanged();
                 }
             });
+        
+        
+        JButton un = new JButton();listeBouttons.add(un);
+        un.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setChanged();
+                    notifyObservers(listeBouttons.indexOf(un));
+                    clearChanged();
+                }
+            });
+
+        JButton deux = new JButton();listeBouttons.add(deux);
+        deux.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setChanged();
+                    notifyObservers(listeBouttons.indexOf(deux));
+                    clearChanged();
+                }
+            });
+
+        JButton trois = new JButton();listeBouttons.add(trois);
+        trois.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setChanged();
+                    notifyObservers(listeBouttons.indexOf(trois));
+                    clearChanged();
+                }
+            });
+
+        JButton quatre = new JButton();listeBouttons.add(quatre);
+        quatre.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setChanged();
+                    notifyObservers(listeBouttons.indexOf(quatre));
+                    clearChanged();
+                }
+            });
+
+        JButton cinq = new JButton();listeBouttons.add(cinq);
+        cinq.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setChanged();
+                    notifyObservers(listeBouttons.indexOf(cinq));
+                    clearChanged();
+                }
+            });
+
+        JButton six = new JButton();listeBouttons.add(six);
+        six.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setChanged();
+                    notifyObservers(listeBouttons.indexOf(six));
+                    clearChanged();
+                }
+            });
+
+        JButton sept = new JButton();listeBouttons.add(sept);
+        sept.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setChanged();
+                    notifyObservers(listeBouttons.indexOf(sept));
+                    clearChanged();
+                }
+            });
+
+        JButton huit = new JButton();listeBouttons.add(huit);
+        huit.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setChanged();
+                    notifyObservers(listeBouttons.indexOf(huit));
+                    clearChanged();
+                }
+            });
+
+        for( int i = 0; i<=8; i++){
             middlePanel.add(listeBouttons.get(i));
         }
         
+        
+        JPanel bottomPanel = new JPanel (new GridLayout(1, 4));
+        mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+        
+        classement = new JButton("Classement");
+        classement.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setChanged();
+                    notifyObservers();
+                    clearChanged();
+                }
+        });
+        bottomPanel.add(classement);
+        bottomPanel.add(new JLabel(""));
+        bottomPanel.add(new JLabel(""));
+        
+        pSuivante = new JButton("Partie Suivante");
+        pSuivante.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setChanged();
+                    notifyObservers();
+                    clearChanged();
+                }
+        });
+        bottomPanel.add(pSuivante);
+                
     }
-
     public JPanel getMiddlePanel() {
         return middlePanel;
     }
