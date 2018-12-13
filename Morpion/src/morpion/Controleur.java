@@ -63,9 +63,11 @@ public class Controleur implements Observer {
         }
         else if(arg instanceof Integer) {
             gererTour(tour, ((Integer) arg));
-            int resultat = verifVictoire(tour);
+            
             ((VueMorpion) o).getListeBouttons().get(((Integer) arg)).setEnabled(false) ;
-            ((VueMorpion) o).getListeBouttons().get(((Integer) arg)).setText("X");
+            ((VueMorpion) o).getListeBouttons().get(((Integer) arg)).setText(symbole(tour));
+            int resultat = verifVictoire(tour);
+            finTour(resultat);
             
             /*
             panel.removeAll()
@@ -138,7 +140,7 @@ public class Controleur implements Observer {
             case 7 : l3 += signe; c2 += signe;
             case 8 : l3 += signe; c3 += signe; d1 += signe;
         }
-        tour += 1;
+        this.tour += 1;
         
     }
     public int verifVictoire(int tour){
@@ -160,5 +162,19 @@ public class Controleur implements Observer {
         d1 = 0;
         d2 = 0;
         
+    }
+    public String symbole(int tour){
+        String sym;
+        if (tour%2 == 0){sym = "X";}
+        else {sym = "O";}
+        return sym;
+    }
+    public void finTour(int resultat){
+        switch (resultat){
+            case -1 :System.out.println("Le joueur 1 a gagné");
+            case 1 : System.out.println("Le joueur 2 a gagné");
+            case 0 : System.out.println("C'est au joueur suivant de jouer");
+            case 2 : System.out.println("Egalité");
+        }
     }
 }
