@@ -65,8 +65,8 @@ public class Controleur implements Observer {
             gererTour(tour, ((Integer) arg));
             int resultat = verifVictoire(tour);
             ((VueMorpion) o).getListeBouttons().get(((Integer) arg)).setEnabled(false) ;
-            ((VueMorpion) o).getListeBouttons().get(((Integer) arg)).setIcon(new ImageIcon( "/users/info/etu-s2/vinotco/rond.jpg"));
-            ((VueMorpion) o).getMiddlePanel().updateUI();
+            ((VueMorpion) o).getListeBouttons().get(((Integer) arg)).setText("X");
+            
             /*
             panel.removeAll()
             panel.validate
@@ -128,15 +128,15 @@ public class Controleur implements Observer {
         if(tour%2 == 0){signe = -1;}
         else{signe = 1;}
         switch (numCase){
-            case 1 : l1 += signe; c1 += signe;d1 += signe;
-            case 2 : l1 += signe; c2 += signe;
-            case 3 : l1 += signe; c3 += signe; d2 += signe;
-            case 4 : l2 += signe; c1 += signe;
-            case 5 : l2 += signe; c2 += signe; d1 += signe; d2 += signe;
-            case 6 : l2 += signe; c3 += signe;
-            case 7 : l3 += signe; c1 += signe; d2 += signe;
-            case 8 : l3 += signe; c2 += signe;
-            case 9 : l3 += signe; c3 += signe; d1 += signe;
+            case 0 : l1 += signe; c1 += signe;d1 += signe;
+            case 1 : l1 += signe; c2 += signe;
+            case 2 : l1 += signe; c3 += signe; d2 += signe;
+            case 3 : l2 += signe; c1 += signe;
+            case 4 : l2 += signe; c2 += signe; d1 += signe; d2 += signe;
+            case 5 : l2 += signe; c3 += signe;
+            case 6 : l3 += signe; c1 += signe; d2 += signe;
+            case 7 : l3 += signe; c2 += signe;
+            case 8 : l3 += signe; c3 += signe; d1 += signe;
         }
         tour += 1;
         
