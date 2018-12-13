@@ -15,5 +15,6 @@ public enum Action {
     ANNULER,
     RETIRER,
     NEXT,
+    CLASSEMENT,
     LANCER;
 }
