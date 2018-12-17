@@ -19,7 +19,7 @@ public class Controleur implements Observer {
     private ArrayList <Joueur> listeJoueurs = new ArrayList();
     private ArrayList <Joueur> classement = new ArrayList();
     private ArrayList <Match> listeMatchs = new ArrayList();
-    private int indexMatch;
+    private int indexMatch = 0;
     private int tour = 0;
     private int l1 = 0;
     private int l2 = 0;
@@ -56,10 +56,20 @@ public class Controleur implements Observer {
             }
             else if (((Action) arg) == Action.LANCER){
                 this.creationListeMatchs(listeJoueurs);
-                resetPartie();
+                
                 VueMorpion VM = new VueMorpion(listeMatchs.get(indexMatch).getJ1().getNom(), listeMatchs.get(indexMatch).getJ2().getNom());
                 VM.afficher();
                 VM.addObserver(this);
+            }
+            else if (((Action) arg) == Action.NEXT){
+                if(indexMatch < listeMatchs.size() ){
+                    indexMatch += 1;
+                    resetPartie();
+                    ((VueMorpion) o).close();
+                    VueMorpion VM = new VueMorpion(listeMatchs.get(indexMatch).getJ1().getNom(), listeMatchs.get(indexMatch).getJ2().getNom());
+                    VM.afficher();
+                    VM.addObserver(this);
+                }
             }
         }
         else if(arg instanceof Integer) {
@@ -108,13 +118,13 @@ public class Controleur implements Observer {
         if (listeJoueurs.size() == 2){listeMatchs.add(new Match(listeJoueurs.get(0), listeJoueurs.get(1)));}
         else {
         
-        for(int i = 0;  i < listeJoueurs.size(); i++){
+        for(int i = 0;  i <= listeJoueurs.size(); i++){
             
             for(int j = i+1; j < listeJoueurs.size(); j++){
                 listeMatchs.add(new Match(listeJoueurs.get(i),listeJoueurs.get(j)));
                 
             }
-                }
+        }
         this.setIndexMatch(1);
         }
         
