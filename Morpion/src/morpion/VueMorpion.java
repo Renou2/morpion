@@ -51,13 +51,13 @@ public class VueMorpion extends Observable{
         topPanel.add(new JLabel("Joueur 2 :"));
         topPanel.add(new JLabel(j2));
         topPanel.add(new JLabel(""));
-        //JLabel image = new JLabel( new ImageIcon( "/users/info/etu-s2/vinotco/croix.jpg"));
-        //topPanel.add(image);
+        JLabel image = new JLabel("O");
+        topPanel.add(image);
         topPanel.add(new JLabel(""));
         topPanel.add(new JLabel(""));
         topPanel.add(new JLabel(""));
-        //JLabel image2 = new JLabel( new ImageIcon( "/users/info/etu-s2/vinotco/rond.jpg"));
-        //topPanel.add(image2);
+        JLabel image2 = new JLabel( "X");
+        topPanel.add(image2);
         
        
         middlePanel = new JPanel (new GridLayout(3, 3));
@@ -176,6 +176,7 @@ public class VueMorpion extends Observable{
         bottomPanel.add(new JLabel(""));
         
         pSuivante = new JButton("Partie Suivante");
+        pSuivante.setEnabled(false);
         pSuivante.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -186,6 +187,10 @@ public class VueMorpion extends Observable{
         });
         bottomPanel.add(pSuivante);
                 
+    }
+
+    public JButton getpSuivante() {
+        return pSuivante;
     }
     public JPanel getMiddlePanel() {
         return middlePanel;
