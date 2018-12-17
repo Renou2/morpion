@@ -79,7 +79,11 @@ public class Controleur implements Observer {
             ((VueMorpion) o).getListeBouttons().get(((Integer) arg)).setText(symbole(tour));
             int resultat = verifVictoire(tour);
             finTour(resultat);
-
+            if(resultat == -1 || resultat == 1 || resultat == 2){
+                for(int i = 0; i<=8; i++){((VueMorpion) o).getListeBouttons().get(i).setEnabled(false); ;}
+                ((VueMorpion) o).getpSuivante().setEnabled(true);
+            }
+            
             
             /*
             panel.removeAll()
@@ -122,7 +126,7 @@ public class Controleur implements Observer {
             
             for(int j = i+1; j < listeJoueurs.size(); j++){
                 listeMatchs.add(new Match(listeJoueurs.get(i),listeJoueurs.get(j)));
-                System.out.println(listeJoueurs.get(i)+","+listeJoueurs.get(j));
+                //System.out.println(listeJoueurs.get(i)+","+listeJoueurs.get(j));
             }
         }
         this.setIndexMatch(0);
@@ -165,10 +169,12 @@ public class Controleur implements Observer {
     }
     public int verifVictoire(int tour){
         int signe ;
-        if(tour == 9){signe = 2;}
+        
         if (l1 == -3 || l2 == -3 || l3 == -3 || c1 == -3 || c2 == -3 || c3 == -3 || d1 == -3 || d2 == -3){signe = -1;}
         else if (l1 == 3 || l2 == 3 || l3 == 3 || c1 == 3 || c2 == 3 || c3 == 3 || d1 == 3 || d2 == 3){signe = 1;}
-        else {signe = 0;}
+        else {signe = 0;
+            if(tour == 9){signe = 2;}
+        }
         
         return signe;
     }
@@ -201,13 +207,13 @@ public class Controleur implements Observer {
             case 2 : System.out.println("Egalité");
                 break;
         }
-        System.out.println(c1);
+        /*System.out.println(c1);
         System.out.println(c2);
         System.out.println(c3);
         System.out.println(l1);
         System.out.println(l2);
         System.out.println(l3);
         System.out.println(d1);
-        System.out.println(d2);        
+        System.out.println(d2); */       
     }
 }
