@@ -56,6 +56,7 @@ public class Controleur implements Observer {
             }
             else if (((Action) arg) == Action.LANCER){
                 this.creationListeMatchs(listeJoueurs);
+                resetPartie();
                 VueMorpion VM = new VueMorpion(listeMatchs.get(indexMatch).getJ1().getNom(), listeMatchs.get(indexMatch).getJ2().getNom());
                 VM.afficher();
                 VM.addObserver(this);
@@ -68,6 +69,7 @@ public class Controleur implements Observer {
             ((VueMorpion) o).getListeBouttons().get(((Integer) arg)).setText(symbole(tour));
             int resultat = verifVictoire(tour);
             finTour(resultat);
+
             
             /*
             panel.removeAll()
@@ -172,9 +174,13 @@ public class Controleur implements Observer {
     public void finTour(int resultat){
         switch (resultat){
             case -1 :System.out.println("Le joueur 1 a gagné");
+                break;
             case 1 : System.out.println("Le joueur 2 a gagné");
+                break;
             case 0 : System.out.println("C'est au joueur suivant de jouer");
+                break;
             case 2 : System.out.println("Egalité");
+                break;
         }
     }
 }
