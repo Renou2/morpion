@@ -122,10 +122,10 @@ public class Controleur implements Observer {
             
             for(int j = i+1; j < listeJoueurs.size(); j++){
                 listeMatchs.add(new Match(listeJoueurs.get(i),listeJoueurs.get(j)));
-                
+                System.out.println(listeJoueurs.get(i)+","+listeJoueurs.get(j));
             }
         }
-        this.setIndexMatch(1);
+        this.setIndexMatch(0);
         }
         
     }
@@ -143,13 +143,21 @@ public class Controleur implements Observer {
         else{signe = 1;}
         switch (numCase){
             case 0 : l1 += signe; c1 += signe;d1 += signe;
+            break;
             case 1 : l1 += signe; c2 += signe;
+            break;
             case 2 : l1 += signe; c3 += signe; d2 += signe;
+            break;
             case 3 : l2 += signe; c1 += signe;
+            break;
             case 4 : l2 += signe; c2 += signe; d1 += signe; d2 += signe;
+            break;
             case 5 : l2 += signe; c3 += signe;
+            break;
             case 6 : l3 += signe; c1 += signe; d2 += signe;
+            break;
             case 7 : l3 += signe; c2 += signe;
+            break;
             case 8 : l3 += signe; c3 += signe; d1 += signe;
         }
         this.tour += 1;
@@ -192,5 +200,13 @@ public class Controleur implements Observer {
             case 2 : System.out.println("Egalité");
                 break;
         }
+        System.out.println(c1);
+        System.out.println(c2);
+        System.out.println(c3);
+        System.out.println(l1);
+        System.out.println(l2);
+        System.out.println(l3);
+        System.out.println(d1);
+        System.out.println(d2);        
     }
 }

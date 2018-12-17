@@ -51,11 +51,13 @@ public class VueMorpion extends Observable{
         topPanel.add(new JLabel("Joueur 2 :"));
         topPanel.add(new JLabel(j2));
         topPanel.add(new JLabel(""));
-        JLabel image = new JLabel( new ImageIcon( "/users/info/etu-s2/vinotco/croix.jpg"));
-        topPanel.add(image);
+        //JLabel image = new JLabel( new ImageIcon( "/users/info/etu-s2/vinotco/croix.jpg"));
+        //topPanel.add(image);
         topPanel.add(new JLabel(""));
-        JLabel image2 = new JLabel( new ImageIcon( "/users/info/etu-s2/vinotco/rond.jpg"));
-        topPanel.add(image2);
+        topPanel.add(new JLabel(""));
+        topPanel.add(new JLabel(""));
+        //JLabel image2 = new JLabel( new ImageIcon( "/users/info/etu-s2/vinotco/rond.jpg"));
+        //topPanel.add(image2);
         
        
         middlePanel = new JPanel (new GridLayout(3, 3));
