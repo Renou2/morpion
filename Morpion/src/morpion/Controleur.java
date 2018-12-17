@@ -165,10 +165,11 @@ public class Controleur implements Observer {
     }
     public int verifVictoire(int tour){
         int signe ;
+        if(tour == 9){signe = 2;}
         if (l1 == -3 || l2 == -3 || l3 == -3 || c1 == -3 || c2 == -3 || c3 == -3 || d1 == -3 || d2 == -3){signe = -1;}
         else if (l1 == 3 || l2 == 3 || l3 == 3 || c1 == 3 || c2 == 3 || c3 == 3 || d1 == 3 || d2 == 3){signe = 1;}
         else {signe = 0;}
-        if(tour == 9){signe = 2;}
+        
         return signe;
     }
     public void resetPartie(){
