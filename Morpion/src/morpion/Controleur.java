@@ -263,4 +263,13 @@ public class Controleur implements Observer {
                 break;
         }
     }
+    
+    /*public void triJoueurs(){
+        
+        for(int j=0; j<listeJoueurs.size()+1; j++){
+            if(listeJoueurs.get(j).estMeilleur(listeJoueurs.get(j+1))){
+                
+            }
+        }
+    }*/
 }

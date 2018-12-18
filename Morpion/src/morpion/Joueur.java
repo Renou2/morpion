@@ -55,7 +55,7 @@ public class Joueur {
     }
     
     public boolean estMeilleur(Joueur j2){
-        if(this.getVictoire()>j2.getVictoire()){
+        if(this.getVictoire()>=j2.getVictoire()){
             return true;
         }else{
             return false;
