@@ -7,10 +7,14 @@ package morpion;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import java.util.Observable;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -18,9 +22,10 @@ import javax.swing.JPanel;
  */
 public class VueClassement extends Observable{
     private JFrame window;
+    private JScrollPane scroll;
     
     
-    public VueClassement(){
+    public VueClassement(ArrayList <String> nomsJoueurs, ArrayList<Integer> victoires, ArrayList<Integer> nuls, ArrayList<Integer> defaites){
     window = new JFrame("Morpion");
 
         window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
@@ -31,5 +36,27 @@ public class VueClassement extends Observable{
         
         JPanel mainPanel = new JPanel(new BorderLayout());
         window.add(mainPanel) ;
+        
+        JPanel middlePanel = new JPanel (new GridLayout(nomsJoueurs.size(), 5));
+        scroll = new JScrollPane(middlePanel);
+        mainPanel.add(scroll, BorderLayout.CENTER);
+        
+        
+        for(Integer i = 0; i<nomsJoueurs.size(); i++ ){
+            middlePanel.add(new JLabel(nomsJoueurs.get(i)));
+            middlePanel.add(new JLabel(victoires.get(i).toString()));
+            middlePanel.add(new JLabel(nuls.get(i).toString()));
+            middlePanel.add(new JLabel(defaites.get(i).toString()));
+            middlePanel.add(new JLabel(""+i+1));
+            
         }
+    }
+    
+    public void afficher() {
+        this.window.setVisible(true);
+    }
+
+    public void close() {
+        this.window.dispose();
+    }
 }

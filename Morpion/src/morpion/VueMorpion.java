@@ -167,7 +167,7 @@ public class VueMorpion extends Observable{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     setChanged();
-                    notifyObservers();
+                    notifyObservers(Action.CLASSEMENT);
                     clearChanged();
                 }
         });
