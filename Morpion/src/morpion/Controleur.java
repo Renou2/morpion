@@ -82,6 +82,7 @@ public class Controleur implements Observer {
             if(resultat == -1 || resultat == 1 || resultat == 2){
                 for(int i = 0; i<=8; i++){((VueMorpion) o).getListeBouttons().get(i).setEnabled(false); ;}
                 ((VueMorpion) o).getpSuivante().setEnabled(true);
+                finMatch(resultat);
             }
             
             
@@ -93,6 +94,38 @@ public class Controleur implements Observer {
             panel.repaint*/
             
         }
+    }
+    
+    public ArrayList <String> getNomsJoueurs(){
+        ArrayList nomsJoueurs = new ArrayList<String>();
+        for(Joueur j : listeJoueurs){
+            nomsJoueurs.add(j.getNom());
+        }
+        return nomsJoueurs;
+    }
+    
+    public ArrayList <Integer> getVictoiresJoueurs(){
+        ArrayList victoiresJoueurs = new ArrayList<Integer>();
+        for(Joueur j : listeJoueurs){
+            victoiresJoueurs.add(j.getVictoire());
+        }
+        return victoiresJoueurs;
+    }
+    
+    public ArrayList <Integer> getNulsJoueurs(){
+        ArrayList nulsJoueurs = new ArrayList<Integer>();
+        for(Joueur j : listeJoueurs){
+            nulsJoueurs.add(j.getNul());
+        }
+        return nulsJoueurs;
+    }
+    
+    public ArrayList <Integer> getDefaitesJoueurs(){
+        ArrayList defaitesJoueurs = new ArrayList<Integer>();
+        for(Joueur j : listeJoueurs){
+            defaitesJoueurs.add(j.getDefaite());
+        }
+        return defaitesJoueurs;
     }
     
     public ArrayList <Joueur> getListeJoueurs() {
@@ -215,5 +248,19 @@ public class Controleur implements Observer {
         System.out.println(l3);
         System.out.println(d1);
         System.out.println(d2); */       
+    }
+    
+    public void finMatch(int resultat){
+        switch (resultat){
+            case -1 :listeMatchs.get(indexMatch).getJ1().setVictoire(1);
+                     listeMatchs.get(indexMatch).getJ2().setDefaite(1);
+                break;
+            case 1 : listeMatchs.get(indexMatch).getJ2().setVictoire(1);
+                     listeMatchs.get(indexMatch).getJ1().setDefaite(1);
+                break;
+            case 2 : listeMatchs.get(indexMatch).getJ2().setNul(1);
+                     listeMatchs.get(indexMatch).getJ1().setNul(1);
+                break;
+        }
     }
 }

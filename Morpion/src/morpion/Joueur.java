@@ -43,15 +43,15 @@ public class Joueur {
     }
 
     public void setVictoire(int Victoire) {
-        this.Victoire = Victoire;
+        this.Victoire += Victoire;
     }
 
     public void setDefaite(int Defaite) {
-        this.Defaite = Defaite;
+        this.Defaite += Defaite;
     }
 
     public void setNul(int Nul) {
-        this.Nul = Nul;
+        this.Nul += Nul;
     }
     
     
