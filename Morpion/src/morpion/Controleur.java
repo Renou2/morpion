@@ -71,6 +71,17 @@ public class Controleur implements Observer {
                     VM.addObserver(this);
                 }
             }
+            else if (((Action) arg) == Action.CLASSEMENT){
+                ArrayList<String> noms = this.getNomsJoueurs();
+                ArrayList<Integer> victoires = this.getVictoiresJoueurs();
+                ArrayList<Integer> defaites = this.getDefaitesJoueurs();
+                ArrayList<Integer> nuls = this.getNulsJoueurs();
+                    VueClassement VC = new VueClassement(noms, victoires, nuls, defaites);
+                    VC.afficher();
+                    VC.addObserver(this);
+                }
+            
+            
         }
         else if(arg instanceof Integer) {
             gererTour(tour, ((Integer) arg));

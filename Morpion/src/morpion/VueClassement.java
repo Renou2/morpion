@@ -37,17 +37,22 @@ public class VueClassement extends Observable{
         JPanel mainPanel = new JPanel(new BorderLayout());
         window.add(mainPanel) ;
         
-        JPanel middlePanel = new JPanel (new GridLayout(nomsJoueurs.size(), 5));
+        JPanel middlePanel = new JPanel (new GridLayout(nomsJoueurs.size()+1, 5));
         scroll = new JScrollPane(middlePanel);
         mainPanel.add(scroll, BorderLayout.CENTER);
-        
+            middlePanel.add(new JLabel("Noms Joueurs : "));
+            middlePanel.add(new JLabel("Victoires :"));
+            middlePanel.add(new JLabel("Nuls :"));
+            middlePanel.add(new JLabel("Défaites :"));
+            middlePanel.add(new JLabel("Classement :"));
         
         for(Integer i = 0; i<nomsJoueurs.size(); i++ ){
             middlePanel.add(new JLabel(nomsJoueurs.get(i)));
             middlePanel.add(new JLabel(victoires.get(i).toString()));
             middlePanel.add(new JLabel(nuls.get(i).toString()));
             middlePanel.add(new JLabel(defaites.get(i).toString()));
-            middlePanel.add(new JLabel(""+i+1));
+            Integer pos = i+1;
+            middlePanel.add(new JLabel(pos.toString()));
             
         }
     }
